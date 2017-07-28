@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xmlns:aop="http://www.springframework.org/schema/aop"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:encryption="http://www.jasypt.org/schema/encryption"
+	   xmlns:mvc="http://www.springframework.org/schema/mvc"
+	   xmlns:util="http://www.springframework.org/schema/util"
+	   xsi:schemaLocation=
+			   "http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+				http://www.jasypt.org/schema/encryption http://www.jasypt.org/schema/encryption/jasypt-spring31-encryption-1.xsd
+				http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+				http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+	<context:annotation-config/>
+	<context:component-scan base-package="com.magnus" />
+	<aop:aspectj-autoproxy />
+	
+	<mvc:resources mapping="/media/**" location="/media/" order="0"/>
+	<mvc:resources mapping="/core/**" location="/core/" order="0"/>
+	<mvc:resources mapping="/app/**" location="/core/app/" order="0"/>
+	<mvc:resources mapping="/client/**" location="/client/" order="0"/>
+	<mvc:resources mapping="/robots.txt" location="/robots.txt" order="0"/>
+
+<!--     <mvc:view-controller path="/**" view-name="forward:/core/app/index.html"/> -->
+
+	<mvc:annotation-driven>
+    </mvc:annotation-driven>
+     
+	<mvc:interceptors>
+		<mvc:interceptor>
+	        <mvc:mapping path="/**" />
+	        <mvc:exclude-mapping path="/media/**"/>
+			<ref bean="requestsLoggerInterceptor" />
+		</mvc:interceptor>
+	</mvc:interceptors>
+	
+	<!-- Use @Transaction annotations for managing transactions  -->    
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+    <!-- Configuration  -->
+	<util:properties id="projectProperties" location="classpath:config/project-${reporting.environment}.properties,classpath:config/application.properties,classpath:config/db.properties" />
+
+	<context:property-placeholder properties-ref="projectProperties" ignore-unresolvable="true"/>
+
+	<bean id="applicationProperties" class="com.magnus.utils.ApplicationProperties" factory-method="getInstance">
+		<property name="applicationProperties">
+			<bean class="com.magnus.utils.TypedProperties">
+				<property name="properties" ref="projectProperties"/>
+			</bean>
+		</property>
+	</bean>
+	<bean id="switches" class="com.magnus.utils.ReloadableSwitch" factory-method="getInstance">
+		<property name="properties">
+			<bean class="com.magnus.utils.TypedProperties">
+				<property name="properties">
+					<util:properties location="classpath:config/switches-${reporting.environment}.properties" />
+				</property>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="applicationContextProvider" class="com.magnus.utils.ApplicationContextProvider"/>
+	
+	<bean id="charEncodingRequestsFilter" class="org.springframework.web.filter.CharacterEncodingFilter">
+		<description>
+			Filter used to fix the charset enconding inside the requests.
+		</description>
+		<property name="forceEncoding" value="true"></property>
+		<property name="encoding" value="utf-8"></property>
+	</bean>
+	
+	<!-- ========================= Performance ========================= -->
+    <aop:config>
+    </aop:config>
+
+    <import resource="classpath:config/hibernate-context.xml"/>
+</beans>

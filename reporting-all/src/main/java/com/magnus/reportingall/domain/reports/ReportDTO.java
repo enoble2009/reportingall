@@ -17,7 +17,7 @@ public class ReportDTO {
 	private String creationDate;
 	
 	private String status;
-
+	
 	public Report create() {
 		Report r = new Report();
 		r.setId(id);

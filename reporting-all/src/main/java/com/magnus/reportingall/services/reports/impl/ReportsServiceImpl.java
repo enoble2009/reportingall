@@ -1,4 +1,4 @@
-package com.magnus.reportingall.services.impl;
+package com.magnus.reportingall.services.reports.impl;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,7 +10,7 @@ import com.magnus.reportingall.domain.reports.Report;
 import com.magnus.reportingall.domain.reports.ReportDTO;
 import com.magnus.reportingall.exceptions.ServiceException;
 import com.magnus.reportingall.exceptions.service.ObjectNotFoundException;
-import com.magnus.reportingall.services.ReportsService;
+import com.magnus.reportingall.services.reports.ReportsService;
 
 @Service
 public class ReportsServiceImpl implements ReportsService {

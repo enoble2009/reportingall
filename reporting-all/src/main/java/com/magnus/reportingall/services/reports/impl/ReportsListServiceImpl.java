@@ -1,4 +1,4 @@
-package com.magnus.reportingall.services.impl;
+package com.magnus.reportingall.services.reports.impl;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import com.magnus.reportingall.daos.query.QueryObject;
 import com.magnus.reportingall.domain.reports.Report;
 import com.magnus.reportingall.domain.reports.ReportFilters;
 import com.magnus.reportingall.exceptions.InvalidFieldException;
-import com.magnus.reportingall.services.ReportsListService;
+import com.magnus.reportingall.services.reports.ReportsListService;
 
 @Service
 public class ReportsListServiceImpl implements ReportsListService {

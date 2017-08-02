@@ -1,9 +1,9 @@
-package com.magnus.reportingall.services.impl;
+package com.magnus.reportingall.services.reports.impl;
 
 import org.springframework.stereotype.Service;
 
 import com.magnus.reportingall.domain.reports.Report;
-import com.magnus.reportingall.services.ReportsExecuteService;
+import com.magnus.reportingall.services.reports.ReportsExecuteService;
 
 @Service
 public class ReportsExecuteServiceImpl implements ReportsExecuteService {

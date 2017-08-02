@@ -1,4 +1,4 @@
-package com.magnus.reportingall.services;
+package com.magnus.reportingall.services.reports;
 
 import java.util.List;
 

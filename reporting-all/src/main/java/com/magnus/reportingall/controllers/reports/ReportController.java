@@ -13,7 +13,7 @@ import com.magnus.reportingall.controllers.AbstractObjectController;
 import com.magnus.reportingall.domain.reports.ReportDTO;
 import com.magnus.reportingall.domain.system.ResponseDTO;
 import com.magnus.reportingall.exceptions.ServiceException;
-import com.magnus.reportingall.services.ReportsService;
+import com.magnus.reportingall.services.reports.ReportsService;
 
 @RestController
 @RequestMapping(value = "/api/report")

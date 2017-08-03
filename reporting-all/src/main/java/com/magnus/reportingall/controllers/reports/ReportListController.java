@@ -10,7 +10,7 @@ import com.magnus.reportingall.domain.reports.ReportDTO;
 import com.magnus.reportingall.domain.reports.ReportFilters;
 import com.magnus.reportingall.domain.system.ResponseDTO;
 import com.magnus.reportingall.exceptions.InvalidFieldException;
-import com.magnus.reportingall.services.ReportsListService;
+import com.magnus.reportingall.services.reports.ReportsListService;
 
 @RestController
 @RequestMapping(value = "/api/report")

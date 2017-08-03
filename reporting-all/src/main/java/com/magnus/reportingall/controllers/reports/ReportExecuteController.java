@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.magnus.reportingall.domain.reports.Report;
-import com.magnus.reportingall.services.ReportsExecuteService;
-import com.magnus.reportingall.services.ReportsService;
+import com.magnus.reportingall.services.reports.ReportsExecuteService;
+import com.magnus.reportingall.services.reports.ReportsService;
 
 @RestController
 @RequestMapping(value = "/api/report")

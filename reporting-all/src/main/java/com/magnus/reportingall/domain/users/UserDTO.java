@@ -1,5 +1,6 @@
 package com.magnus.reportingall.domain.users;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.magnus.utils.RandomStringUtils;
@@ -32,6 +33,18 @@ public class UserDTO {
 		dto.setUserRoles(u.getUserRolesNames());
 		
 		return dto;
+	}
+
+	public static List<UserDTO> createList(List<User> users) {
+		List<UserDTO> list = new ArrayList<UserDTO>();
+		if (users == null) {
+			return list;
+		}
+		for (User u: users) {
+			list.add(UserDTO.create(u));
+		}
+		
+		return list;
 	}
 
 	public List<String> getUserRoles() {

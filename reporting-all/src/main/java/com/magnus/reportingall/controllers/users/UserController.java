@@ -12,8 +12,10 @@ import com.magnus.reportingall.domain.users.UserDTO;
 import com.magnus.reportingall.domain.users.UserLoginDTO;
 import com.magnus.reportingall.services.users.UserSessionsService;
 import com.magnus.reportingall.services.users.UsersService;
+import com.magnus.utils.ErrorCodes;
 
 @RestController
+@RequestMapping(value = "/api/user")
 public class UserController {
 
 	@Autowired
@@ -29,7 +31,18 @@ public class UserController {
 	
 	@RequestMapping(value = "/login", method = {RequestMethod.POST})
 	public ResponseDTO<?> getUser(@RequestBody UserLoginDTO loginDTO) {
-		return ResponseDTO.createSuccess(userSessionsService.login(loginDTO));
+		String token = userSessionsService.login(loginDTO);
+		//TODO: Set session cookie.
+		return token != null? 
+				ResponseDTO.createSuccess(token):
+				ResponseDTO.createMsgError(ErrorCodes.FAIL_LOGIN);
+	}
+	
+	@RequestMapping(value = "/logout/{token}", method = {RequestMethod.GET})
+	public ResponseDTO<?> getUser(@PathVariable(name = "token") String token) {
+		userSessionsService.logout(token);
+		//TODO: Clean session cookie.
+		return ResponseDTO.createSuccess(null);
 	}
 	
 }

@@ -1,8 +1,8 @@
-package com.magnus.reportingall.daos.impl;
+package com.magnus.reportingall.daos.reports.impl;
 
 import org.springframework.stereotype.Repository;
 
-import com.magnus.reportingall.daos.ReportsDao;
+import com.magnus.reportingall.daos.reports.ReportsDao;
 import com.magnus.reportingall.domain.reports.Report;
 import com.magnus.utils.ExtendedHibernateDaoSupport;
 

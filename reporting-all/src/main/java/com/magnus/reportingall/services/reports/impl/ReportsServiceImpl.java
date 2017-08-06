@@ -5,7 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.magnus.reportingall.daos.ReportsDao;
+import com.magnus.reportingall.daos.reports.ReportsDao;
 import com.magnus.reportingall.domain.reports.Report;
 import com.magnus.reportingall.domain.reports.ReportDTO;
 import com.magnus.reportingall.exceptions.ServiceException;

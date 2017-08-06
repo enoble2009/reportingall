@@ -1,4 +1,4 @@
-package com.magnus.reportingall.daos;
+package com.magnus.reportingall.daos.reports;
 
 import com.magnus.reportingall.domain.reports.Report;
 

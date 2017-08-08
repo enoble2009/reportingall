@@ -3,6 +3,7 @@ package com.magnus.reportingall.services.users.impl;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.magnus.reportingall.daos.users.UserSessionsDao;
@@ -12,6 +13,7 @@ import com.magnus.reportingall.domain.users.UserSession;
 import com.magnus.reportingall.services.users.UserSessionsService;
 import com.magnus.utils.RandomStringUtils;
 
+@Service
 public class UserSessionsServiceImpl implements UserSessionsService {
 
 	private static final Log logger = LogFactory.getLog(UserSessionsServiceImpl.class);

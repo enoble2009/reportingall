@@ -6,9 +6,11 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.magnus.reportingall.domain.reports.reportfile.FileBody;
+import com.magnus.reportingall.domain.reports.reportfile.FileDatabase;
 import com.magnus.reportingall.domain.reports.reportfile.FilePermission;
 
 @XmlRootElement
@@ -21,11 +23,18 @@ public class ReportFile {
 	@XmlElement
 	private FileDatabase database;
 	
-	@XmlElement
+	@XmlElementWrapper
+    @XmlElement(name="permission")
 	private List<FilePermission> permissions;
 	
 	@XmlElement
 	private FileBody body;
+
+	@Override
+	public String toString() {
+		return "ReportFile [name=" + name + ", database=" + database + ", permissions=" + permissions + ", body=" + body
+				+ "]";
+	}
 
 	public String getName() {
 		return name;
@@ -49,6 +58,14 @@ public class ReportFile {
 
 	public void setPermissions(List<FilePermission> permissions) {
 		this.permissions = permissions;
+	}
+
+	public FileDatabase getDatabase() {
+		return database;
+	}
+
+	public void setDatabase(FileDatabase database) {
+		this.database = database;
 	}
 
 }

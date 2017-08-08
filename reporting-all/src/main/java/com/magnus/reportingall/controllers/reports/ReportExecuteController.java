@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.magnus.reportingall.domain.reports.Report;
+import com.magnus.reportingall.exceptions.ServiceException;
 import com.magnus.reportingall.services.reports.ReportsExecuteService;
 import com.magnus.reportingall.services.reports.ReportsService;
 
@@ -24,7 +25,7 @@ public class ReportExecuteController {
 	
 	@RequestMapping(value = "/execute/html/{id}", method = {RequestMethod.GET}, produces = MediaType.TEXT_HTML_VALUE)
 	@ResponseBody
-	public String getReport(@PathVariable(name = "id") Long id) {
+	public String getReport(@PathVariable(name = "id") Long id) throws ServiceException {
 		Report report = reportsService.findById(id);
 		
 		return reportsExecuteService.executeHTML(report);

@@ -1,10 +1,13 @@
 package com.magnus.reportingall.daos.users.impl;
 
+import org.springframework.stereotype.Repository;
+
 import com.magnus.reportingall.daos.users.UserSessionsDao;
 import com.magnus.reportingall.domain.users.User;
 import com.magnus.reportingall.domain.users.UserSession;
 import com.magnus.utils.ExtendedHibernateDaoSupport;
 
+@Repository
 public class UserSessionsDaoImpl extends ExtendedHibernateDaoSupport implements UserSessionsDao {
 
 	@Override

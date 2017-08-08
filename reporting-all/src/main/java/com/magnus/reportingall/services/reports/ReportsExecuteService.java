@@ -1,6 +1,7 @@
 package com.magnus.reportingall.services.reports;
 
 import com.magnus.reportingall.domain.reports.Report;
+import com.magnus.reportingall.exceptions.ServiceException;
 
 public interface ReportsExecuteService {
 
@@ -10,7 +11,8 @@ public interface ReportsExecuteService {
 	 * 
 	 * @param report
 	 * @return
+	 * @throws ServiceException 
 	 */
-	String executeHTML(Report report);
+	String executeHTML(Report report) throws ServiceException;
 	
 }

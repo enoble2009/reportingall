@@ -12,10 +12,15 @@ public class FileBodyObject {
 	private Integer columns = 12;
 	
 	@XmlAttribute
-	private String type;
+	private FileBodyObjectType type;
 	
 	@XmlElement
 	private String query;
+
+	@Override
+	public String toString() {
+		return "FileBodyObject [columns=" + columns + ", type=" + type + ", query=" + query + "]";
+	}
 
 	public Integer getColumns() {
 		return columns;
@@ -25,11 +30,11 @@ public class FileBodyObject {
 		this.columns = columns;
 	}
 
-	public String getType() {
+	public FileBodyObjectType getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(FileBodyObjectType type) {
 		this.type = type;
 	}
 

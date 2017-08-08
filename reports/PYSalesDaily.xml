@@ -1,0 +1,34 @@
+<reportFile name="Sales Daily PY">
+	<permissions>
+		<permission name="PY sales reports"></permission>
+	</permissions>
+	<database>
+		<username>root</username>
+		<password>root</password>
+		<dbms>mysql</dbms>
+		<server>localhost</server>
+		<port>3306</port>
+		<dbName>test</dbName>
+	</database>
+	<body>
+		<rows>
+			<row>
+				<objects>
+					<object columns="6" type="GRAPH2D">
+						<query>SELECT u.name AS USERNAME, u.age AS AGE FROM users u</query>
+					</object>
+					<object columns="6" type="GRAPH2D	">
+						<query>SELECT u.name AS USERNAME, u.age AS AGE FROM users u</query>
+					</object>
+				</objects>
+			</row>
+			<row>
+				<objects>
+					<object columns="12" type="TABLE">
+						<query>SELECT u.name AS USERNAME, u.age AS AGE FROM users u</query>
+					</object>
+				</objects>
+			</row>
+		</rows>
+	</body>
+</reportFile>

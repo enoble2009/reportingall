@@ -14,12 +14,23 @@ public class FileBodyObject {
 	@XmlAttribute
 	private FileBodyObjectType type;
 	
+	@XmlAttribute
+	private String name;
+	
 	@XmlElement
 	private String query;
 
 	@Override
 	public String toString() {
 		return "FileBodyObject [columns=" + columns + ", type=" + type + ", query=" + query + "]";
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public Integer getColumns() {

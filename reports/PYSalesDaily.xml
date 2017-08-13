@@ -14,10 +14,10 @@
 		<rows>
 			<row>
 				<objects>
-					<object columns="6" type="GRAPH2D">
+					<object columns="6" type="GRAPH2D" name="PeopleAge">
 						<query>SELECT u.name AS USERNAME, u.age AS AGE FROM users u</query>
 					</object>
-					<object columns="6" type="GRAPH2D	">
+					<object columns="6" type="GRAPH2D" name="PeopleAge2">
 						<query>SELECT u.name AS USERNAME, u.age AS AGE FROM users u</query>
 					</object>
 				</objects>
@@ -25,6 +25,22 @@
 			<row>
 				<objects>
 					<object columns="12" type="TABLE">
+						<typesList>
+							<type>STRING</type>
+							<type>NUMBER</type>
+						</typesList>
+						<columnsList>
+							<column><name>Username</name></column>
+							<column><name>Age</name></column>
+							<column><name>Double Age</name></column>
+							<column><name>Four</name></column>
+						</columnsList>
+						<valuesList>
+							<value><ref>USERNAME</ref></value>
+							<value><ref>AGE</ref></value>
+							<value><ref>AGE+AGE</ref></value>
+							<value><ref>4</ref></value>
+						</valuesList>
 						<query>SELECT u.name AS USERNAME, u.age AS AGE FROM users u</query>
 					</object>
 				</objects>

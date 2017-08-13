@@ -4,6 +4,7 @@ import java.io.File;
 import java.sql.Connection;
 import java.sql.SQLException;
 
+import javax.script.ScriptException;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 
@@ -47,6 +48,9 @@ public class ReportsExecuteServiceImpl implements ReportsExecuteService {
 		} catch (JAXBException e) {
 			throw new XMLBadParseException();
 		} catch (SQLException e) {
+			throw new DatabaseException();
+		} catch (ScriptException e) {
+			logger.error(e);
 			throw new DatabaseException();
 		}
 	}

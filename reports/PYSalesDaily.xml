@@ -42,6 +42,12 @@
 							<value><ref>4</ref></value>
 						</valuesList>
 						<query>SELECT u.name AS USERNAME, u.age AS AGE FROM users u</query>
+						<footer>
+							<rowsList>
+								<row type="string"><val>'Promedio'</val></row>
+								<row type="number"><val>sum(AGE)/length(_ROWS)</val></row>
+							</rowsList>
+						</footer>
 					</object>
 				</objects>
 			</row>

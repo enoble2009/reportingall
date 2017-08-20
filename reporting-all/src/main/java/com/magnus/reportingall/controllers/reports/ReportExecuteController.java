@@ -11,10 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.magnus.reportingall.domain.reports.Report;
-<<<<<<< HEAD
-import com.magnus.reportingall.exceptions.ServiceException;
-=======
->>>>>>> branch 'master' of https://github.com/enoble2009/reportingall.git
 import com.magnus.reportingall.services.reports.ReportsExecuteService;
 import com.magnus.reportingall.services.reports.ReportsService;
 

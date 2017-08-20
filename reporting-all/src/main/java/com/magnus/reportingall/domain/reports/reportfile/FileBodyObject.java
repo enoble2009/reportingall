@@ -35,9 +35,20 @@ public class FileBodyObject {
     @XmlElement(name="value")
 	private List<FileBodyObjectValue> valuesList;
 
+	@XmlElement(required = false)
+	private FileBodyObjectFooter footer;
+	
 	@Override
 	public String toString() {
 		return "FileBodyObject [columns=" + columns + ", type=" + type + ", query=" + query + "]";
+	}
+
+	public FileBodyObjectFooter getFooter() {
+		return footer;
+	}
+
+	public void setFooter(FileBodyObjectFooter footer) {
+		this.footer = footer;
 	}
 
 	public List<FileBodyObjectDataType> getTypesList() {

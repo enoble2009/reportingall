@@ -14,7 +14,6 @@ import javax.script.ScriptException;
 import com.magnus.reportingall.domain.reports.ReportFile;
 import com.magnus.reportingall.domain.reports.reportfile.FileBody;
 import com.magnus.reportingall.domain.reports.reportfile.FileBodyObject;
-import com.magnus.reportingall.domain.reports.reportfile.FileBodyObjectDataType;
 import com.magnus.reportingall.domain.reports.reportfile.FileBodyObjectType;
 import com.magnus.reportingall.domain.reports.reportfile.FileBodyRow;
 
@@ -43,9 +42,8 @@ public class HTMLReportViewer extends AbstractReportViewer {
 				ResultSet rSet = reportConn.prepareStatement(obj.getQuery()).executeQuery();
 				List<Map<String, String>> table = fetchTable(reportConn, obj, rSet);
 				List<String> tableHeader = fetchTableHeader(rSet);
-				List<FileBodyObjectDataType> tableTypes = fetchTableTypes(obj);
 				if (FileBodyObjectType.TABLE.equals(obj.getType())) {
-					res += String.format("<div class='col-xs-%d'>%s</div>", obj.getColumns(), TableReportObject.processTable(reportConn, obj.getName(), obj.getColumnsList(), obj.getValuesList(), tableHeader, tableTypes, table));
+					res += String.format("<div class='col-xs-%d'>%s</div>", obj.getColumns(), TableReportObject.processTable(reportConn, obj, tableHeader, table));
 				}
 				if (FileBodyObjectType.GRAPH2D.equals(obj.getType())) {
 					res += String.format("<div class='col-xs-%d'>%s</div>", obj.getColumns(), Graph2DReportObject.processGraph2D(reportConn, obj.getName(), tableHeader, table));
@@ -53,10 +51,6 @@ public class HTMLReportViewer extends AbstractReportViewer {
 			}
 		}
 		return res;
-	}
-
-	private static List<FileBodyObjectDataType> fetchTableTypes(FileBodyObject obj) {
-		return obj.getTypesList();
 	}
 
 	private static List<Map<String, String>> fetchTable(Connection reportConn, FileBodyObject obj, ResultSet rSet) throws SQLException {
